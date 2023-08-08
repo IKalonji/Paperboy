@@ -8,11 +8,11 @@ app = Flask(__name__)
 def root():
     return render_template("index.html")
 
-@app.route("eth-create", methods=["GET"])
+@app.route("/eth-create", methods=["GET"])
 def generateEvmAddr():
     return {"result": "ok", "addr": "addressHere", "priv": "privKeyHere"}
 
-@app.route("btc-create", methods=["GET"])
+@app.route("/btc-create", methods=["GET"])
 def generateBtcAddr():
     return {"result": "ok", "addr": "addressHere", "priv": "privKeyHere"}
 
