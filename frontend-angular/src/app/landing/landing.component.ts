@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Network } from '../types/network.type';
+import { Networks } from '../models/networks.models';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  networks: Network[];
+  selectedNetwork: Network | undefined;
+  generator: boolean;
 
-  ngOnInit(): void {
+  constructor() {
+    this.networks = Networks;
+    this.generator = false;
+   }
+
+  ngOnInit(): void {}
+
+  requestWalletAddress(){
+    this.generator = true;
+  }
+
+  dialogClosed() {
+    this.generator = false;
   }
 
 }

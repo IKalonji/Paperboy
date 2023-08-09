@@ -1,7 +1,13 @@
 from flask import Flask
 from flask import render_template
+from flask_cors import CORS
+from generators.btc_generator import BtcAddrGenerator
+from generators.evm_generator import EvmAddrGenerator
 
 app = Flask(__name__)
+CORS(app)
+evm_addr = BtcAddrGenerator()
+
 
 
 @app.route("/")

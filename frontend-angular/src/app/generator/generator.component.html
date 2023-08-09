@@ -1,1 +1,13 @@
-<p>generator works!</p>
+<div class="text-center">
+    <div class="text-lg p-5">
+        <label>{{status}}</label>
+    </div>
+    <div *ngIf="loading">
+        <i class="pi pi-spin pi-spinner" style="font-size: 5rem; color: green;"></i>
+    </div>
+    <div *ngIf="!loading">
+        <label for="pubkey">{{keys.pubkey}}</label>
+        <label for="privkey">{{keys.privkey}}</label>
+    </div>
+    
+</div>

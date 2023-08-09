@@ -1,1 +1,32 @@
-<p>landing works!</p>
+<div class="grid grid-nogutter surface-section text-800">
+    <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+        <section>
+            <span class="block text-6xl font-bold mb-1">Paperboy.</span>
+            <div class="text-6xl text-primary font-bold mb-3">The ultimate paper wallet generator</div>
+            <p class="mt-0 mb-4 text-700 line-height-3">Get the most secure blockchain wallet, in just two clicks, create a self custody paper wallet.</p> 
+            <div class="text-center mt-3">
+                <span class="text-center">
+                    <p-dropdown [options]="networks" [(ngModel)]="selectedNetwork" optionLabel="network" [showClear]="true" placeholder="Select a Network" class="mr-2">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedNetwork">
+                                <div>{{selectedNetwork.network}}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-network pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{network.network}}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                    <button type="button" pButton label="Generate" styleClass="p-button-info" class="mr-2" (click)="requestWalletAddress()" [disabled]="selectedNetwork == undefined"></button>
+                </span>
+            </div>       
+        </section>
+    </div>
+    <div class="col-12 md:col-6 overflow-hidden">
+        <img src="../../assets/paperboy.jpg" alt="Image" class="md:ml-auto block md:h-full max-h-screen" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)">
+    </div>
+    <p-dialog header="Paper incoming..." [(visible)]="generator" [style]="{width: '50vw'}" (onHide)="dialogClosed()">
+        <app-generator id="generator" [selectedNetwork]="selectedNetwork" [inView]="generator"></app-generator>
+    </p-dialog>
+</div>

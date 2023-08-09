@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url: 'https://paperboy-demoapp-77o48.ondigitalocean.app/'
 };
