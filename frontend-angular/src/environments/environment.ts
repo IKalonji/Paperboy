@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://paperboy-demoapp-77o48.ondigitalocean.app/'
+  url: 'http://localhost:5555/'
 };
 
 /*

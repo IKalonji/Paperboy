@@ -6,8 +6,12 @@
         <i class="pi pi-spin pi-spinner" style="font-size: 5rem; color: green;"></i>
     </div>
     <div *ngIf="!loading">
-        <label for="pubkey">{{keys.pubkey}}</label>
-        <label for="privkey">{{keys.privkey}}</label>
+        <div>
+            <label for="pubkey">Public Key: {{keys.pubkey}}</label>
+        </div>
+        <div>
+            <label for="privkey">Private Key: {{keys.privkey}}</label>
+        </div>
     </div>
     
 </div>

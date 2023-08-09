@@ -39,6 +39,7 @@ export class GeneratorComponent implements OnInit, OnChanges {
         this.status = data.result
         this.loading = false;
         if (data.result == "ok"){
+          this.status = "Copy the details below and store it a safe place!"
           this.keys.pubkey = data.data.pubkey;
           this.keys.privkey = data.data.privkey;
         }
