@@ -1,17 +1,22 @@
 from bitcoinaddress import Wallet
+import uuid
+import os
 
 class BtcAddrGenerator():
     def __init__(self):
         pass
 
     def generate(self):
-
         try:
+            uuid_generated = uuid.uuid4()
+            unique_download_id = str(uuid_generated)
             created_wallet = Wallet()
-            print("wallet:", str(created_wallet.address), "key:", str(created_wallet.address))
+            result = self.writer(f"{created_wallet.key}\n{created_wallet.address}", unique_download_id)
+            print(result)
             return {
                 "result": "ok",
                 "error": "",
+                "download": f"{unique_download_id}.txt",
                 "data": {
                     "privkey": str(created_wallet.key),
                     "pubkey": str(created_wallet.address)
@@ -20,12 +25,20 @@ class BtcAddrGenerator():
         except Exception as error:
             return {
                 "result": "error",
-                "error": error,
+                "error": str(error),
+                "download": "",
                 "data": {
                     "privkey": "",
                     "pubkey": ""
                 }
             }
-                
-    def create_download_link():
-        pass
+    def writer(self, data, unique_id):
+        try:
+            path = os.path.join(os.getcwd(), "uuid_files", f"{unique_id}.txt")
+            file = open(path, "a+")
+            file.write(data)
+            file.close()
+            return True
+        except Exception as error:
+            print(error)
+            return False

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { GeneratorResponse, Keys, Network } from '../types/network.type';
 import { GeneratorService } from '../services/generator.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-generator',
@@ -14,6 +15,8 @@ export class GeneratorComponent implements OnInit, OnChanges {
   status: string = '';
   loading: boolean;
   keys: Keys;
+  showDownload: boolean = false;
+  link: string = "";
 
   constructor(private generatorService:GeneratorService) {
     this.loading = true;
@@ -42,6 +45,8 @@ export class GeneratorComponent implements OnInit, OnChanges {
           this.status = "Copy the details below and store it a safe place!"
           this.keys.pubkey = data.data.pubkey;
           this.keys.privkey = data.data.privkey;
+          this.showDownload = true;
+          this.link = `${environment.url}/download/${data.download}`
         }
       })
     }
