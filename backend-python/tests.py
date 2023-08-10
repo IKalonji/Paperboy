@@ -16,6 +16,7 @@ class TestGenerators(unittest.TestCase):
         """Test BTC Generator"""
         generator = BtcAddrGenerator()
         result = generator.generate()
+        print(result) # debuging weird error
         self.assertEqual(result.get("result"), "ok", "Should be ok")
         self.assertEqual(result.get("error"), "", "Should not have an error")
 
