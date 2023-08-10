@@ -17,11 +17,11 @@ def root():
 
 @app.route("/eth-create", methods=["GET"])
 def generateEvmAddr():
-    return {"result": "ok", "error": "", "data": {"privkey": "private key", "pubkey": "public key"}}
+    return evm_addr.generate()
 
 @app.route("/btc-create", methods=["GET"])
 def generateBtcAddr():
-    return {"result": "ok", "error": "", "data": {"privkey": "private key", "pubkey": "public key"}}
+    return btc_addr.generate()
 
 if __name__=="__main__":
     app.run(port=5555, host="0.0.0.0")
