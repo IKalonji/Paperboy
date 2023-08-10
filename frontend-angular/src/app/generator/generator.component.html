@@ -6,14 +6,14 @@
         <i class="pi pi-spin pi-spinner" style="font-size: 5rem; color: green;"></i>
     </div>
     <div *ngIf="!loading">
-        <div>
+        <div class="mt-2">
             <label for="pubkey">Public Key: {{keys.pubkey}}</label>
         </div>
-        <div>
+        <div class="mt-2">
             <label for="privkey">Private Key: {{keys.privkey}}</label>
         </div>
-        <div>
-            <a pButton href="{{link}}" target="_blank">Download</a>
+        <div class="mt-2" *ngIf="showDownload">
+            <a pButton href="{{link}}" target="_blank" download>Download</a>
         </div>
     </div>
     
