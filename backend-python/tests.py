@@ -16,6 +16,7 @@ class TestGenerators(unittest.TestCase):
         """Test BTC Generator"""
         generator = BtcAddrGenerator()
         result = generator.generate()
+        print(result)
         self.assertEqual(result.get("result"), "ok", "Should be ok")
         self.assertEqual(result.get("error"), "", "Should not have an error")
         # this test is applied for github actions as the worker no longer supports openssl ripemd160 hash function
