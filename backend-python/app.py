@@ -15,6 +15,10 @@ try:
 except FileExistsError as error:
     print("Skipping, folder exists.")
 
+file_not_found = open(os.path.join(os.getcwd(), "uuid_files", "file_not_found.txt"), "a+")
+file_not_found.write("Not found")
+file_not_found.close()
+
 @app.route("/")
 def root():
     return render_template("index.html")
@@ -30,7 +34,10 @@ def generateBtcAddr():
 @app.route("/download/<file_name>", methods=['GET'])
 def downloadKey(file_name):
     path = os.path.join(app.root_path, 'uuid_files')
-    return send_from_directory(path, file_name)
+    try:
+        return send_from_directory(path, file_name)
+    except FileNotFoundError as error:
+        return send_from_directory(path, "file_not_found.txt")
 
 if __name__=="__main__":
     app.run(port=5555, host="0.0.0.0")
